@@ -1,0 +1,55 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    vector<string> names;
+    vector<int> grades;
+
+    while (true) {
+        string name;
+        int grade;
+
+        cout << "Enter student name (or 'q' to quit): ";
+        getline(cin, name);
+
+        if (name == "q") {
+            break;
+        }
+
+        cout << "Enter grade for " << name << ": ";
+        cin >> grade;
+        cin.ignore(); 
+
+        names.push_back(name);
+        grades.push_back(grade);
+        cout<<"------------------------------------------------------------"<<endl;
+    }
+    
+    double total = 0.0;
+    int highest= 0;
+    int lowest= 100;
+
+    for (int grade : grades) {
+        total += grade;
+        if (grade >= highest) {
+            highest = grade;
+        }
+        if (grade <= lowest) {
+            lowest = grade;
+        }
+    }
+
+    int avg = total / grades.size();
+
+    cout << "\nGrade Summary:\n";
+    cout << "----------------\n";
+    cout << "Average Grade: " << avg << endl;
+    cout << "Highest Grade: " << highest<< endl;
+    cout << "Lowest Grade: " << lowest<< endl;
+
+    return 0;
+}
